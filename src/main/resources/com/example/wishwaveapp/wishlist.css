@@ -1,0 +1,349 @@
+/* ===== GENERAL STYLES ===== */
+.root {
+    -fx-background-color: #F7F3E3; /* Soft pastel */
+    -fx-text-fill: #0D0C1D; /* Deep black */
+    -fx-alignment: center;
+    -fx-background-image: url("assets/wave.png");
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center -80;
+    -fx-font-family: "Inconsolata";
+}
+
+/* ===== HEADER STYLES ===== */
+.header {
+    -fx-padding: 20;
+    -fx-spacing: 20;
+    -fx-alignment: center;
+    -fx-font-size: 16;
+    -fx-pref-height: 90;
+}
+
+.logo {
+    -fx-font-family: "Press Start 2P";
+    -fx-margin-right: 25;
+    -fx-cursor: hand;
+    -fx-font-size: 20;
+}
+
+.nav {
+    -fx-spacing: 15;
+}
+
+.nav ImageView {
+    -fx-cursor: hand;
+    -fx-fit-width: 50;
+    -fx-fit-height: 50;
+    -fx-preserve-ratio: true;
+}
+
+.create-wish {
+    -fx-padding: 10 20;
+    -fx-font-size: 24;
+    -fx-border-width: 2;
+    -fx-border-color: #0D0C1D; /* Deep black */
+    -fx-background-color: transparent !important;
+    -fx-text-fill: #0D0C1D !important;
+    -fx-cursor: hand;
+}
+
+.create-wish:hover {
+    -fx-background-color: #0D0C1D !important;
+    -fx-text-fill: #F7F3E3 !important; /* Light pastel */
+}
+
+/* ===== PROFILE SECTION ===== */
+.profile-header {
+    -fx-alignment: center;
+    -fx-spacing: 10;
+    -fx-padding: 10 20;
+}
+
+.profile-pic {
+    -fx-border-color: #0D0C1D;
+    -fx-border-width: 1;
+    -fx-min-width: 100;
+    -fx-min-height: 100;
+    -fx-max-width: 100;
+    -fx-max-height: 100;
+    -fx-background-color: transparent;
+    -fx-background-radius: 50;
+    -fx-border-radius: 50;
+}
+
+.username {
+    -fx-font-family: 'Press Start 2P', cursive;
+    -fx-font-size: 16px;
+}
+
+.bio {
+    -fx-text-fill: #506C64;
+    -fx-font-size: 15px;
+}
+
+/* ===== CATEGORY BAR ===== */
+.category-bar {
+    -fx-background-color: #51A3A3;
+    -fx-text-fill: #0D0C1D;
+    -fx-min-height: 60;
+    -fx-max-height: 60;
+    -fx-alignment: center-left;
+    -fx-spacing: 0;
+    -fx-padding: 0;
+    -fx-border-color: #0D0C1D;
+    -fx-border-width: 1;
+}
+
+.categories {
+    -fx-alignment: center-left;
+    -fx-min-height: 60;
+    -fx-max-height: 60;
+    -fx-spacing: 0;
+}
+
+.category {
+    -fx-background-color: #DD7373 !important; /* Pink background */
+    -fx-min-width: 270;
+    -fx-max-width: 270;
+    -fx-min-height: 60;
+    -fx-max-height: 60;
+    -fx-text-fill: #0D0C1D !important;
+    -fx-font-size: 32px;
+    -fx-cursor: hand;
+    -fx-background-radius: 0;
+    -fx-background-insets: 0;
+    -fx-margin: 0;
+    -fx-border-color: #0D0C1D;
+    -fx-border-width: 1;
+}
+
+/* ===== SCROLL PANE ===== */
+.scroll-pane, .scroll-pane > .viewport {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+    -fx-border-width: 0;
+}
+
+.wishlist-container {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+    -fx-margin: 20px;
+    -fx-border-width: 0;
+    -fx-background-insets: 0;
+}
+
+.wishlist-container .viewport {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+    -fx-border-width: 0;
+}
+
+/* ===== WISHLIST GRID ===== */
+.wishlist-grid {
+    -fx-alignment: top-left;
+}
+
+/* ===== WISHLIST ITEMS ===== */
+.wishlist-item {
+    -fx-background-color: #F7F3E3;
+    -fx-pref-width: 320px;
+    -fx-pref-height: 475px;
+    -fx-min-width: 200px;
+    -fx-max-width: 400px;
+    -fx-border-color: #0D0C1D;
+    -fx-border-width: 1;
+    -fx-padding: 5px;
+    -fx-alignment: center;
+    -fx-margin: 10px;
+}
+
+.item-image {
+    -fx-margin-top: 50;
+    -fx-border-color: #0D0C1D;
+    -fx-border-width: 1;
+    -fx-min-height: 252;
+    -fx-max-height: 300;
+    -fx-background-color: transparent;
+    -fx-margin-bottom: 10;
+    -fx-alignment: center;
+    -fx-translate-y: -30;
+}
+
+.small-button {
+    -fx-max-height: 15;
+    -fx-max-width: 15;
+    -fx-cursor: hand;
+    -fx-padding-bottom: 40;
+}
+
+.small-button:hover {
+    -fx-background-color: #0D0C1D;
+    -fx-text-fill: #F7F3E3;
+}
+
+/* Item Details */
+.item-details {
+    -fx-spacing: 5;
+    -fx-alignment: center;
+}
+
+.item-title {
+    -fx-font-size: 18px;
+}
+
+.item-description {
+    -fx-font-size: 15px;
+    -fx-text-fill: #506C64;
+}
+
+/* Item Buttons */
+.item-buttons {
+    -fx-spacing: 10;
+    -fx-alignment: center;
+    -fx-padding: 10 0;
+}
+
+.price-btn, .link-btn {
+    -fx-font-family: 'Gilda Display', serif;
+    -fx-border-width: 0;
+    -fx-padding: 10 15;
+    -fx-font-size: 16px;
+    -fx-text-fill: #0D0C1D !important;
+    -fx-background-radius: 0;
+}
+
+.price-btn {
+    -fx-background-color: #DD7373 !important;
+}
+
+.link-btn {
+    -fx-background-color: #51A3A3 !important;
+    -fx-cursor: hand;
+}
+
+.link-btn:hover {
+    -fx-background-color: #0D0C1D !important;
+    -fx-text-fill: #F7F3E3 !important;
+}
+
+/* ===== DIALOG STYLES ===== */
+.dialog-pane {
+    -fx-background-color: #F7F3E3;
+    -fx-border-color: #0D0C1D;
+    -fx-border-width: 2;
+    -fx-border-radius: 5;
+    -fx-background-radius: 5;
+}
+
+.dialog-pane .button-bar .button {
+    -fx-background-color: #51A3A3;
+    -fx-text-fill: #0D0C1D;
+    -fx-font-family: 'Gilda Display', serif;
+    -fx-padding: 8 10;
+    -fx-background-radius: 0;
+}
+
+.dialog-pane .button-bar .button:hover {
+    -fx-background-color: #0D0C1D;
+    -fx-text-fill: #F7F3E3;
+}
+
+/* Dialog container styles */
+.dialog-container {
+    -fx-background-color: transparent !important;
+    -fx-border-radius: 10px;
+    -fx-padding: 10px;
+    -fx-font-family: "Arial", sans-serif;
+    -fx-font-size: 14px;
+}
+
+.dialog-container .text-field,
+.dialog-container .text-area {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #DD7373;
+    -fx-border-radius: 5px;
+    -fx-padding: 5px;
+    -fx-font-size: 14px;
+    -fx-text-fill: #0D0C1D;
+}
+
+.dialog-container .text-field::placeholder,
+.dialog-container .text-area::placeholder {
+    -fx-opacity: 0.6;
+}
+
+.dialog-container .image-view {
+    -fx-border-color: #DD7373;
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+    -fx-padding: 5px;
+    -fx-background-color: #ffffff;
+}
+
+.dialog-container .button {
+    -fx-background-color: #51A3A3;
+        -fx-text-fill: #0D0C1D;
+        -fx-font-family: 'Gilda Display', serif;
+        -fx-padding: 8 10;
+        -fx-background-radius: 0;
+}
+
+.dialog-container .button:hover {
+    -fx-background-color: #0D0C1D;
+        -fx-text-fill: #F7F3E3;
+}
+
+.dialog-container .hyperlink {
+    -fx-font-size: 14px;
+    -fx-text-fill: #51A3A3;
+    -fx-decoration: underline;
+}
+
+.dialog-container .hyperlink:hover {
+    -fx-text-fill: #DD7373;
+}
+
+.dialog-container .vbox {
+    -fx-spacing: 4px;
+    -fx-background-color: transparent !important;
+}
+
+.dialog-container .vbox .label {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #0D0C1D;
+}
+
+.dialog-container .button#addImageButton {
+    -fx-background-color: #51A3A3;
+    -fx-text-fill: #0D0C1D;
+}
+
+.dialog-container .button#addImageButton:hover {
+    -fx-background-color: #0D0C1D;
+            -fx-text-fill: #F7F3E3;
+}
+
+.section-title {
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
+    -fx-padding: 5 0;
+}
+
+.text-field {
+    -fx-background-color: white;
+    -fx-border-color: #DD7373;
+    -fx-border-radius: 3;
+    -fx-padding: 8;
+}
+
+.button {
+    -fx-background-color: #51A3A3;
+    -fx-text-fill: white;
+    -fx-padding: 8 15;
+    -fx-cursor: hand;
+}
+
+.button:hover {
+    -fx-background-color: #DD7373;
+}

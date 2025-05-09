@@ -1,0 +1,111 @@
+/* WishWave JavaFX CSS */
+
+/* General Reset - applies to root */
+.root {
+    -fx-background-color: #F7F3E3; /* Soft pastel */
+    -fx-text-fill: #0D0C1D; /* Deep black */
+    -fx-alignment: center;
+    -fx-background-image: url("assets/Wave.png");
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center -80;
+    -fx-font-family: "Inconsolata";
+}
+
+/* Header Styles */
+.header {
+    -fx-padding: 20;
+    -fx-spacing: 20;
+    -fx-alignment: center;
+    -fx-font-size: 16;
+    -fx-pref-height: 90;
+}
+
+.logo {
+    -fx-font-family: "Press Start 2P";
+    -fx-margin-right: 25;
+    -fx-cursor: hand;
+    -fx-font-size: 20;
+}
+
+.nav {
+    -fx-spacing: 15;
+}
+
+.nav ImageView {
+    -fx-cursor: hand;
+    -fx-fit-width: 50;
+    -fx-fit-height: 50;
+    -fx-preserve-ratio: true;
+}
+
+/* Create Wish Button */
+.create-wish {
+    -fx-padding: 10 20;
+    -fx-font-size: 24;
+    -fx-border-width: 2;
+    -fx-border-color: #0D0C1D; /* Deep black */
+    -fx-background-color: transparent;
+    -fx-text-fill: #0D0C1D;
+    -fx-cursor: hand;
+}
+
+.create-wish:hover {
+    -fx-background-color: #0D0C1D;
+    -fx-text-fill: #F7F3E3; /* Light pastel */
+}
+
+/* Main Section */
+.main-content {
+    -fx-padding: 50 20;
+}
+
+.h1 {
+    -fx-font-family: "Gilda Display";
+    -fx-font-size: 32;
+}
+
+.wishwave-title {
+    -fx-padding: 20;
+    -fx-font-family: "Press Start 2P";
+    -fx-font-size: 128;
+    -fx-letter-spacing: 3;
+    -fx-margin: 10 0;
+    -fx-text-fill: #51A3A3; /* Cool teal */
+}
+
+/* Description */
+.description {
+    -fx-font-size: 16;
+    -fx-max-width: 640;
+    -fx-alignment: center;
+    -fx-text-alignment: center;
+    -fx-wrap-text: true;
+}
+
+.highlight {
+    -fx-fill: #DD7373; /* Warm red-pink */
+}
+
+/* Floating 3D Gift Boxes */
+.gift {
+    -fx-opacity: 1;
+    -fx-fit-width: 230;
+    -fx-preserve-ratio: true;
+}
+
+.gift1 {
+    -fx-translate-y: -250;
+    -fx-translate-x: -400;
+}
+
+.gift2 {
+    -fx-translate-y: 150;
+    -fx-translate-x: 400;
+}
+
+.footer {
+    -fx-padding: 10 0;
+    -fx-font-size: 14;
+    -fx-translate-y: 300;
+}

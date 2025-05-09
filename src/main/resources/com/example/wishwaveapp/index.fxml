@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import java.net.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.wishwaveapp.MainController"
+            styleClass="root">
+
+    <!-- Stylesheet - Note how we reference without leading slash -->
+    <stylesheets>
+        <URL value="@style.css" />
+    </stylesheets>
+
+    <!-- Header Section -->
+    <top>
+        <HBox styleClass="header">
+            <!-- Logo Section -->
+            <HBox HBox.hgrow="ALWAYS" alignment="CENTER_LEFT">
+                <Label fx:id="logoLabel" text="WishWave™   " styleClass="logo"/>
+            </HBox>
+
+
+            <!-- Button -->
+            <HBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
+                <Button fx:id="goToWishlists" text="TO YOUR WISHLISTS" styleClass="create-wish"/>
+            </HBox>
+        </HBox>
+    </top>
+
+    <!-- Main Content Section -->
+    <center>
+        <StackPane>
+            <!-- Text Content -->
+            <VBox styleClass="main-content" alignment="CENTER" spacing="20">
+                <Label text="Welcome to..." styleClass="h1"/>
+                <Label text="WishWave" styleClass="wishwave-title"/>
+
+                <TextFlow styleClass="description">
+                    <Text text="Your "/>
+                    <Text text="digital playground" styleClass="highlight"/>
+                    <Text text=" for dreams and desires. "/>
+                    <Text text="Curate your perfect wishlist" styleClass="highlight"/>
+                    <Text text=" and "/>
+                    <Text text="ride the wave" styleClass="highlight"/>
+                    <Text text=" of vibrant pixels and "/>
+                    <Text text="smooth" styleClass="highlight"/>
+                    <Text text=" vibes."/>
+                </TextFlow>
+
+                <Label text="© 2025 Uliana Sova. All rights reserved." styleClass="footer"/>
+            </VBox>
+
+            <!-- Decorative Elements -->
+            <ImageView fx:id="gift1" styleClass="gift, gift1" mouseTransparent="true"
+                       translateX="-500" translateY="-200" fitWidth="230" preserveRatio="true">
+                <Image url="@assets/Present3.png"/>
+            </ImageView>
+
+            <ImageView fx:id="gift2" styleClass="gift, gift2" mouseTransparent="true"
+                       translateX="-500" translateY="120" fitWidth="230" preserveRatio="true">
+                <Image url="@assets/Present4.png"/>
+            </ImageView>
+        </StackPane>
+    </center>
+
+</BorderPane>

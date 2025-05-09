@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import java.net.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.wishwaveapp.WishlistController"
+            prefWidth="1440" prefHeight="800"
+            styleClass="root">
+
+    <stylesheets>
+        <URL value="@wishlist.css" />
+    </stylesheets>
+
+    <!-- Header -->
+    <top>
+        <HBox styleClass="header">
+            <HBox HBox.hgrow="ALWAYS" alignment="CENTER_LEFT">
+                <Label fx:id="logoLabel" text="WishWave™   " styleClass="logo"/>
+            </HBox>
+
+            <HBox alignment="CENTER" HBox.hgrow="ALWAYS">
+                <HBox styleClass="nav">
+                    <ImageView fx:id="wishlistIcon">
+                        <Image url="@assets/Wishes.png"/>
+                    </ImageView>
+                    <ImageView fx:id="user">
+                        <Image url="@assets/User.png"/>
+                    </ImageView>
+                    <ImageView fx:id="settings">
+                        <Image url="@assets/Settings.png"/>
+                    </ImageView>
+                </HBox>
+            </HBox>
+
+            <HBox alignment="CENTER_RIGHT" HBox.hgrow="ALWAYS">
+                <Button fx:id="goToWishlists" text="TO YOUR WISHLISTS" styleClass="create-wish"/>
+            </HBox>
+        </HBox>
+    </top>
+
+    <!-- Main Content Area -->
+    <center>
+        <VBox>
+            <!-- Profile Header -->
+            <VBox styleClass="profile-header">
+                <Pane fx:id="profilePic" styleClass="profile-pic"/>
+                <Label styleClass="username" fx:id="username" text="user1234"/>
+                <Label styleClass="bio" fx:id="bio" text="No bio yet"/>
+            </VBox>
+
+            <!-- Category Bar -->
+            <HBox styleClass="category-bar">
+                <HBox fx:id="categories" spacing="0" alignment="CENTER_LEFT">
+                    <!-- Categories will be added dynamically in the controller -->
+                </HBox>
+            </HBox>
+
+            <!-- Wishlist Items Grid -->
+            <ScrollPane fitToWidth="true" fitToHeight="true" styleClass="wishlist-container">
+                <GridPane fx:id="wishlistGrid" styleClass="wishlist-grid" hgap="10" vgap="10">
+                    <columnConstraints>
+                        <ColumnConstraints halignment="CENTER" percentWidth="25"/>
+                        <ColumnConstraints halignment="CENTER" percentWidth="25"/>
+                        <ColumnConstraints halignment="CENTER" percentWidth="25"/>
+                        <ColumnConstraints halignment="CENTER" percentWidth="25"/>
+                    </columnConstraints>
+                    <!-- Items will be added dynamically -->
+                </GridPane>
+            </ScrollPane>
+        </VBox>
+    </center>
+
+</BorderPane>
