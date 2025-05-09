@@ -55,7 +55,6 @@ public class MainController implements Navigator {
             FXMLLoader loader = new FXMLLoader(fxmlUrl);
             Parent root = loader.load();
 
-            // Initialize the controller if it's a WishlistController
             Object controller = loader.getController();
             if (controller instanceof WishlistController) {
                 WishlistController wishlistController = (WishlistController) controller;
