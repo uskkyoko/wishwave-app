@@ -9,8 +9,36 @@ import java.io.*;
 public class FileManager {
 
     public static void saveUserData(User user, String filePath) {
-        try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(filePath))) {
-            oos.writeObject(user);
+        try (PrintWriter writer = new PrintWriter(new FileWriter(filePath))) {
+            writer.println("User: " + user.getUsername());
+
+            if (user.getBio() != null && !user.getBio().isEmpty()) {
+                writer.println("Bio: " + user.getBio());
+            }
+
+            if (user.getProfileImagePath() != null && !user.getProfileImagePath().isEmpty()) {
+                writer.println("ProfilePicture: " + user.getProfileImagePath());
+            }
+
+            writer.println("\nWishlists:");
+            for (Wishlist wishlist : user.getWishlists()) {
+                writer.println("\n== " + wishlist.getName() + " ==");
+                writer.println("Items:");
+
+                for (Wish wish : wishlist.getWishes()) {
+                    writer.println("\n- " + wish.getName());
+                    if (wish.getDescription() != null && !wish.getDescription().isEmpty()) {
+                        writer.println("  Description: " + wish.getDescription());
+                    }
+                    writer.println("  Price: $" + wish.getPrice());
+                    writer.println("  Link: " + wish.getLink());
+
+                    if (wish.getImagePath() != null && !wish.getImagePath().isEmpty()) {
+                        writer.println("  Image: " + wish.getImagePath());
+                    }
+                }
+            }
+
             System.out.println("User data saved successfully to " + filePath);
         } catch (IOException e) {
             System.err.println("Error saving user data: " + e.getMessage());
@@ -19,11 +47,106 @@ public class FileManager {
     }
 
     public static User loadUserData(String filePath) {
-        try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(filePath))) {
-            User user = (User) ois.readObject();
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            String line = reader.readLine();
+            if (line == null || !line.startsWith("User: ")) {
+                throw new IOException("Invalid user file format - missing user information");
+            }
+
+            String username = line.substring("User: ".length());
+            String bio = "";
+            String profilePicturePath = null;
+
+            while ((line = reader.readLine()) != null) {
+                if (line.startsWith("Bio: ")) {
+                    bio = line.substring("Bio: ".length());
+                } else if (line.startsWith("ProfilePicture: ")) {
+                    profilePicturePath = line.substring("ProfilePicture: ".length());
+                } else if (line.equals("Wishlists:")) {
+                    break;
+                }
+            }
+
+            User user = new User(username, bio, profilePicturePath);
+
+            Wishlist currentWishlist = null;
+            String wishName = null;
+            String wishDescription = "";
+            double wishPrice = 0.0;
+            String wishLink = "";
+            String wishImagePath = null;
+            boolean inWishlistItems = false;
+
+            while ((line = reader.readLine()) != null) {
+                line = line.trim();
+
+                if (line.isEmpty()) {
+                    continue;
+                }
+
+                if (line.startsWith("== ") && line.endsWith(" ==")) {
+                    if (currentWishlist != null) {
+                        if (wishName != null && inWishlistItems) {
+                            currentWishlist.addWish(new Wish(wishName, wishDescription, wishPrice, wishLink, wishImagePath));
+                        }
+                        user.addWishlist(currentWishlist);
+                    }
+
+                    String wishlistName = line.substring(3, line.length() - 3);
+                    currentWishlist = new Wishlist(wishlistName);
+                    inWishlistItems = false;
+                    wishName = null;
+                }
+                else if (line.equals("Items:")) {
+                    inWishlistItems = true;
+                }
+                else if (inWishlistItems && line.startsWith("- ")) {
+                    if (wishName != null) {
+                        currentWishlist.addWish(new Wish(wishName, wishDescription, wishPrice, wishLink, wishImagePath));
+                    }
+
+                    wishName = line.substring("- ".length());
+                    wishPrice = 0.0;
+                    wishLink = "";
+                    wishImagePath = null;
+                    wishDescription = "";
+                }
+                else if (inWishlistItems && wishName != null) {
+
+                    if (line.startsWith("Price: $")) {
+                        try {
+                            String priceStr = line.substring("Price: $".length());
+                            wishPrice = Double.parseDouble(priceStr);
+                        } catch (NumberFormatException e) {
+                            System.err.println("Error parsing price: " + line);
+                        }
+                    }
+
+                    else if (line.startsWith("Link: ")) {
+                        wishLink = line.substring("Link: ".length());
+                    }
+
+                    else if (line.startsWith("Image: ")) {
+                        wishImagePath = line.substring("Image: ".length());
+                    }
+
+                    else if (line.startsWith("Description: ")) {
+                        wishDescription = line.substring("Description: ".length());
+                    }
+                }
+            }
+
+
+            if (currentWishlist != null) {
+                if (wishName != null && inWishlistItems) {
+                    currentWishlist.addWish(new Wish(wishName, wishDescription, wishPrice, wishLink, wishImagePath));
+                }
+                user.addWishlist(currentWishlist);
+            }
+
             System.out.println("User data loaded successfully from " + filePath);
             return user;
-        } catch (IOException | ClassNotFoundException e) {
+        } catch (IOException e) {
             System.err.println("Error loading user data: " + e.getMessage());
             return createDefaultUser();
         }
@@ -132,7 +255,7 @@ public class FileManager {
     }
 
     //DEFAULT FOR HOMEWORK
-    private static User createDefaultUser() {
+    public static User createDefaultUser() {
         User user = new User("ulianasova", "<3>", "/C:/Uliana/images/art/Geto Suguru.jpg");
 
         Wishlist techWishlist = new Wishlist("Tech Gadgets");

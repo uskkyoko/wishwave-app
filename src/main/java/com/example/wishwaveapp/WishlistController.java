@@ -78,19 +78,7 @@ public class WishlistController implements Navigator {
         if (dataFile.exists()) {
             currentUser = FileManager.loadUserData(USER_DATA_FILE);
         } else {
-            currentUser = new User("user1234", "No bio yet", null);
-
-            /// SAMPLES FOR QUICK HOMEWORK
-            Wishlist techWishlist = new Wishlist("Tech Gadgets");
-            techWishlist.addWish(new Wish("MacBook Pro", "16-inch, M1 Pro, Space Gray", 2399.99, "https://apple.com", null));
-            techWishlist.addWish(new Wish("AirPods Pro", "Active Noise Cancellation", 249.99, "https://apple.com", null));
-
-            Wishlist booksWishlist = new Wishlist("Books");
-            booksWishlist.addWish(new Wish("Dune", "Frank Herbert's sci-fi classic", 15.99, "https://amazon.com", null));
-
-            currentUser.addWishlist(techWishlist);
-            currentUser.addWishlist(booksWishlist);
-
+            currentUser = FileManager.createDefaultUser();
             FileManager.saveUserData(currentUser, USER_DATA_FILE);
         }
     }
