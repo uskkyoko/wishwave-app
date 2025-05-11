@@ -408,10 +408,11 @@ public class WishlistController implements Navigator {
                 try {
                     String name = nameField.getText();
                     String description = descField.getText();
-                    double price = 0;
+                    double price;
                     try {
                         price = Double.parseDouble(priceField.getText());
                     } catch (NumberFormatException e) {
+                        price = 0;
                     }
                     String link = linkField.getText();
 

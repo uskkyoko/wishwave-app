@@ -17,6 +17,7 @@ public class FileManager {
             e.printStackTrace();
         }
     }
+
     public static User loadUserData(String filePath) {
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(filePath))) {
             User user = (User) ois.readObject();
@@ -35,8 +36,15 @@ public class FileManager {
 
             for (Wish wish : wishlist.getWishes()) {
                 writer.println("\n- " + wish.getName());
+
+                if (wish.getDescription() != null && !wish.getDescription().isEmpty()) {
+                    writer.println("  Description: " + wish.getDescription());
+                }
                 writer.println("  Price: $" + wish.getPrice());
                 writer.println("  Link: " + wish.getLink());
+                if (wish.getImagePath() != null && !wish.getImagePath().isEmpty()) {
+                    writer.println("  Image: " + wish.getImagePath());
+                }
             }
 
             System.out.println("Wishlist exported successfully to " + filePath);
@@ -67,10 +75,11 @@ public class FileManager {
                 throw new IOException("Invalid wishlist file format - 'Items:' section not found");
             }
 
-            Wish currentWish = null;
             String wishName = null;
             double wishPrice = 0.0;
             String wishLink = "";
+            String wishImagePath = null;
+            String wishDescription = "";
 
             while ((line = reader.readLine()) != null) {
                 line = line.trim();
@@ -81,12 +90,14 @@ public class FileManager {
 
                 if (line.startsWith("- ")) {
                     if (wishName != null) {
-                        wishlist.addWish(new Wish(wishName, "", wishPrice, wishLink, null));
+                        wishlist.addWish(new Wish(wishName, wishDescription, wishPrice, wishLink, wishImagePath));
                     }
 
                     wishName = line.substring("- ".length());
                     wishPrice = 0.0;
                     wishLink = "";
+                    wishImagePath = null;
+                    wishDescription = "";
                 }
                 else if (line.startsWith("Price: $")) {
                     try {
@@ -99,10 +110,16 @@ public class FileManager {
                 else if (line.startsWith("Link: ")) {
                     wishLink = line.substring("Link: ".length());
                 }
+                else if (line.startsWith("Image: ")) {
+                    wishImagePath = line.substring("Image: ".length());
+                }
+                else if (line.startsWith("Description: ")) {
+                    wishDescription = line.substring("Description: ".length());
+                }
             }
 
             if (wishName != null) {
-                wishlist.addWish(new Wish(wishName, "", wishPrice, wishLink, null));
+                wishlist.addWish(new Wish(wishName, wishDescription, wishPrice, wishLink, wishImagePath));
             }
 
             System.out.println("Wishlist imported successfully from " + filePath);
@@ -114,8 +131,9 @@ public class FileManager {
         }
     }
 
+    //DEFAULT FOR HOMEWORK
     private static User createDefaultUser() {
-        User user = new User("user1234", "No bio yet", null);
+        User user = new User("ulianasova", "<3>", "/C:/Uliana/images/art/Geto Suguru.jpg");
 
         Wishlist techWishlist = new Wishlist("Tech Gadgets");
         techWishlist.addWish(new Wish("MacBook Pro", "16-inch, M1 Pro, Space Gray", 2399.99, "https://apple.com", ""));
@@ -123,6 +141,7 @@ public class FileManager {
 
         Wishlist booksWishlist = new Wishlist("Books");
         booksWishlist.addWish(new Wish("Dune", "Frank Herbert's sci-fi classic", 15.99, "https://amazon.com", ""));
+        booksWishlist.addWish(new Wish("The Hobbit", "J.R.R. Tolkien", 12.99, "https://amazon.com", ""));
 
         user.addWishlist(techWishlist);
         user.addWishlist(booksWishlist);
