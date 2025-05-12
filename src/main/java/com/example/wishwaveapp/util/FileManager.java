@@ -256,7 +256,7 @@ public class FileManager {
 
     //DEFAULT FOR HOMEWORK
     public static User createDefaultUser() {
-        User user = new User("ulianasova", "<3>", "/C:/Uliana/images/art/Geto Suguru.jpg");
+        User user = new User("ulianasova", "<3>", "C:/Uliana/images/art/Geto Suguru.jpg");
 
         Wishlist techWishlist = new Wishlist("Tech Gadgets");
         techWishlist.addWish(new Wish("MacBook Pro", "16-inch, M1 Pro, Space Gray", 2399.99, "https://apple.com", ""));

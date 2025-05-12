@@ -1,5 +1,7 @@
 package com.example.wishwaveapp.model;
 
+import com.example.wishwaveapp.util.QuickSort;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -8,6 +10,7 @@ import java.util.List;
 public class Wishlist implements Serializable {
     private String name;
     private List<Wish> wishes;
+    private static final QuickSort<Wish> sorter = new QuickSort<>();
 
     public Wishlist(String name) {
         this.name = name;
@@ -27,19 +30,19 @@ public class Wishlist implements Serializable {
     }
 
     public void sortByPriceAscending() {
-        wishes.sort(Comparator.comparing(Wish::getPrice));
+        sorter.sort(wishes, Comparator.comparing(Wish::getPrice));
     }
 
     public void sortByPriceDescending() {
-        wishes.sort(Comparator.comparing(Wish::getPrice).reversed());
+        sorter.sort(wishes, Comparator.comparing(Wish::getPrice).reversed());
     }
 
     public void sortByName() {
-        wishes.sort(Comparator.comparing(Wish::getName));
+        sorter.sort(wishes, Comparator.comparing(Wish::getName));
     }
 
     public void sortByDateAdded() {
-        wishes.sort(Comparator.comparing(Wish::getDateAdded).reversed());
+        sorter.sort(wishes, Comparator.comparing(Wish::getDateAdded).reversed());
     }
 
     public String getName() {

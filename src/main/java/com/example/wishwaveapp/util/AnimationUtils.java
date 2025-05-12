@@ -12,7 +12,6 @@ public class AnimationUtils {
         upTransition.setByY(-10);
         upTransition.setDelay(Duration.seconds(delaySeconds));
 
-
         TranslateTransition downTransition = new TranslateTransition(Duration.millis(durationMillis / 2), image);
         downTransition.setByY(10);
 

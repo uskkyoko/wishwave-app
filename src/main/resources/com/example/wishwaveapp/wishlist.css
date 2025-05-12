@@ -68,7 +68,7 @@
     -fx-max-height: 100;
     -fx-background-color: transparent;
     -fx-background-radius: 50;
-    -fx-border-radius: 50;
+    -fx-border-radius: 0;
 }
 
 .username {
