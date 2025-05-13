@@ -42,7 +42,7 @@ public class WishlistController implements Navigator {
     private User currentUser;
     private Wishlist currentWishlist;
     private Stage primaryStage;
-    private final String USER_DATA_FILE = "user_data.dat";
+    private final String USER_DATA_FILE = "user_data.txt";
 
     public void setStage(Stage stage) {
         this.primaryStage = stage;
@@ -215,7 +215,7 @@ public class WishlistController implements Navigator {
             HBox buttonsBox = new HBox();
             buttonsBox.getStyleClass().add("item-buttons");
 
-            Button priceBtn = new Button("$" + String.format("%.2f", wish.getPrice()));
+            Button priceBtn = new Button("$" + String.format("%.0f", wish.getPrice()));
             priceBtn.getStyleClass().add("price-btn");
 
             Button linkBtn = new Button("Website");
@@ -318,7 +318,7 @@ public class WishlistController implements Navigator {
         descField.setPrefRowCount(3);
         descField.getStyleClass().add("text-field");
 
-        TextField priceField = new TextField(String.format("%.2f", wish.getPrice()));
+        TextField priceField = new TextField(String.format("%.0f", wish.getPrice()));
         priceField.setPromptText("Price");
         priceField.getStyleClass().add("text-field");
 
