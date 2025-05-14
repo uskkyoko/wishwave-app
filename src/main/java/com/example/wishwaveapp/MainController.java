@@ -18,13 +18,10 @@ public class MainController implements Navigator {
 
     @FXML
     private Label logoLabel;
-
     @FXML
     private Button goToWishlists;
-
     @FXML
     private ImageView gift1;
-
     @FXML
     private ImageView gift2;
 
